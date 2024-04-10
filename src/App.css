@@ -1,0 +1,24 @@
+*{
+    font-family: 'Roboto' !important;
+}
+
+.btn-nav{
+    color: white;
+    font-weight: 500;
+    background-color: darkgreen;
+    border: 2px green;
+}
+
+.btn-select{
+    background-color: brown;
+}
+
+.ques{
+    color: brown !important;
+    font-size: 1.1rem !important;
+}
+
+.btn-nav:hover{
+    background-color: green;
+    color: black;    
+}

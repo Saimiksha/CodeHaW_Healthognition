@@ -1,0 +1,46 @@
+<html>
+<body>
+
+<h2 class="display-3 m-5 fw-bolder" style="color: brown">TERMS AND CONDITIONS</h2>
+<p>Before using the checkup, please read the Terms of Service and remember:
+    Checkup isn’t a diagnosis. It’s only for your information and not a qualified medical opinion.
+    Checkup isn’t for emergencies. Call your local emergency number right away when there’s a health emergency.
+    Your data is safe. The information you give won’t be shared or used to identify you.</p>
+<tr>
+<td> I agree that have read and accept term of service.: <input type="checkbox" id="check1" class="pl" value="Term1"> </td>
+<td> I agree for my health information to be used for the interview.: <input type="checkbox" id="check2" class="pl" value="Term2"> </td> 
+</tr> 
+<tr>
+<button onclick="checkAll()">Check all</button> <br><br>
+<button onclick="getCheckboxValue()">Submit</button> <br>
+<h4 style="color:green" id="result"></h4>  
+
+<script>
+function checkAll() {
+        var inputs = document.querySelectorAll('.pl'); 
+        for (var i = 0; i < inputs.length; i++) { 
+            inputs[i].checked = true; 
+        } 
+}
+function getCheckboxValue() {
+
+  var l1 = document.getElementById("check1");
+  var l2 = document.getElementById("check2");
+   
+  var res=" "; 
+  if (l1.checked == true){
+    var pl1 = document.getElementById("check1").value;
+    res = pl1 + ","; 
+  } 
+  else if (l2.checked == true){
+    var pl2 = document.getElementById("check2").value;
+    res = res + pl2 + ","; 
+  }
+  else {
+  return document.getElementById("result").innerHTML = "You have not selected anything";
+  }
+}
+</script>
+
+</body>
+</html>
