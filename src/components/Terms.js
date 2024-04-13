@@ -1,13 +1,26 @@
-import { Link } from "react-router-dom"
-import { useState } from "react"
+import {useNavigate} from 'react-router-dom'
+import {useRef, useState,useHistory} from 'react'
 import bg from "../asset/images/site-bg.png"
+import Consult from "./Consult"
 function Terms() {
-  const [condition1, setCondition1] = useState(
-    null
-  )
-  const [condition2, setCondition2] = useState(
-    null
-  )
+  const[site,setSite]=useState()
+
+  const ref = useRef(null)
+
+  const navigate = useNavigate()
+
+
+  async function onSubmit(e) {
+    e.preventDefault()
+    if (ref.current.checked) {
+      console.log('✅ Checkbox is checked')
+      setSite(navigate('/Consult'))
+    } else {
+      console.log('⛔️ Checkbox is NOT checked')
+      setSite('**Please click the checkboxes.')
+    }
+  }
+
   return (
     <div style={{ backgroundImage: `url(${bg})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", height: '100vh' }}>
       <section id="Intro">
@@ -25,20 +38,21 @@ function Terms() {
             Checkup isn’t for emergencies. Call your local emergency number right away when there’s a health emergency.
             Your data is safe. The information you give won’t be shared or used to identify you.</p>
           <div className="form-check">
-            <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" onClick={() => setCondition1(true)} />
+            <input ref={ref} className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault"/>
             <label className="form-check-label text-content" htmlFor="flexCheckDefault">
               I agree that have read and accept term of service.
             </label>
           </div>
           <div className="form-check">
-            <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" onClick={() => setCondition2(true)} />
+            <input ref={ref} className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault"/>
             <label className="form-check-label text-content" htmlFor="flexCheckDefault">
               I agree for my health information to be used for the interview.
             </label>
           </div>
-          <Link to={"/Consult"}>
-            <button type="button" className="btn btn-nav my-2">Next</button>
-          </Link>
+
+          
+            <button onClick={onSubmit}   type="button" className="btn btn-nav my-2">Next</button>
+            <h4>{site}</h4>
         </div>
       </section>
     </div>
