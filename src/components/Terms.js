@@ -17,7 +17,7 @@ function Terms() {
       setSite(navigate('/Consult'))
     } else {
       console.log('⛔️ Checkbox is NOT checked')
-      setSite('**Please click the checkboxes.')
+      setSite('**Please agree to the terms & conditions.')
     }
   }
 
